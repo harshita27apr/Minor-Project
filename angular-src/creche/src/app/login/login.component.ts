@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../register.service';
 import { Router } from '@angular/router';
+import { ContactService} from '../contact.service'
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ export class LoginComponent implements OnInit {
   res;
 
   constructor(private register : RegisterService,
+    private contact : ContactService,
   private router : Router) { }
 
   ngOnInit() {
@@ -35,6 +37,7 @@ export class LoginComponent implements OnInit {
       }
       else if (radio == "Creche" && this.res.result == true) {
         this.register.setvalue("Creche")
+        this.contact.setcreche(email);
         this.router.navigate(['/crechehome']);
       }
     })

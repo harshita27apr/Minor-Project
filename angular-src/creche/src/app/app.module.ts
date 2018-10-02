@@ -27,6 +27,8 @@ import { FacultyComponent } from './faculty/faculty.component';
 import { ChildrenComponent } from './children/children.component';
 import { AddnoticeComponent } from './addnotice/addnotice.component';
 import { ComplainsComponent } from './complains/complains.component';
+import { AddcomplainComponent } from './addcomplain/addcomplain.component';
+import { NoticeComponent } from './notice/notice.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { ComplainsComponent } from './complains/complains.component';
     FacultyComponent,
     ChildrenComponent,
     AddnoticeComponent,
-    ComplainsComponent
+    ComplainsComponent,
+    AddcomplainComponent,
+    NoticeComponent
   ],
   imports: [
     BrowserModule,

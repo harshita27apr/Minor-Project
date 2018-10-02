@@ -29,6 +29,9 @@
         <a class="nav-link" routerLink="/addnotice">Add Notice</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" routerLink="/notice">Notice</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" routerLink="/complains">Complains</a>
         </li>
         <li class="nav-item"> 
@@ -37,3 +40,42 @@
       </ul>
     </div>
   </nav>
+
+
+  <div class="card" style="background-color:transparent">
+    <div class="card-body">
+      <div class="container">
+      <h3 class="text-center text-dark">Add Notice</h3><br>
+      <form class= "form-horizontal" #noticeForm="ngForm" style="background-color: transparent; text-align: center">
+    
+    <div class="row d-flex justify-content-center">
+      <div class="col-xs-4">
+          <div class="form-group">
+              <input type="text" class="form-control" #title="ngModel" name="title" placeholder="Enter the title of notice" id="title" required minlength = "10"
+                    [(ngModel)]="not.title">
+          <div *ngIf="title.errors && (title.dirty || title.touched)">
+              <div [hidden]="!title.errors.required">
+                  <mark>Title is required!</mark>
+              </div>
+              <div [hidden]="!title.errors.minlength">
+                <mark>Title must be at least 10 characters long.</mark>
+              </div>
+          </div>
+          </div>
+      </div>
+    </div>
+    
+      <div class="row d-flex justify-content-center">
+        <div class="col-xs-4">
+      <div class="form-group">
+        <textarea [(ngModel)]="not.description" placeholder="Description" class="form-control" #description="ngModel" name="description" id="description"></textarea>
+      </div>
+      </div>
+      </div>
+    
+      <button type="submit" [disabled]="!noticeForm.form.valid" (click)="notice(title.value,description.value)" class="btn btn-primary btn-lg">Add Notice</button>
+    
+    </form>
+    </div>
+    </div>
+    </div>

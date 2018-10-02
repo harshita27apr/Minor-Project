@@ -13,6 +13,7 @@ export class ContactComponent implements OnInit {
   res;
   cont = new Contact('','','');
 
+
   constructor(
     private contactservice : ContactService) { 
   }

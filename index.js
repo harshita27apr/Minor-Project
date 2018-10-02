@@ -8,10 +8,12 @@ var bcrypt = require('bcryptjs');
 app.use(bodyParser.json(),cors());
 const saltRounds = 10;
 
-var {Government} = require('./models/government')
-var {Parent} = require('./models/parent')
-var {Creche} = require('./models/creche')
-var {Faculty} = require('./models/faculty')
+var {Government} = require('./models/government');
+var {Parent} = require('./models/parent');
+var {Creche} = require('./models/creche');
+var {Faculty} = require('./models/faculty');
+var {Notice} = require('./models/notice');
+var {Complain} = require('./models/complains');
 
 app.post('/contact',function(req,res){
     nodemailer.createTestAccount((err, account) => {
@@ -35,6 +37,32 @@ app.post('/contact',function(req,res){
     })
 })
 });
+
+app.post('/notice' , function(req,res) {
+    var not = new Notice ({
+        title : req.body.title,
+        description : req.body.description,
+        crecheEmail : req.body.email
+    });
+    not.save().then((doc) => {
+        res.send(doc);
+    } , (e) => {
+        res.status(400).send(e)
+    });
+})
+
+app.post('/complain' , function(req,res) {
+    var comp = new Complain ({
+        subject : req.body.subject,
+        description : req.body.description,
+        crecheEmail : req.body.email
+    });
+    comp.save().then((doc) => {
+        res.send(doc);
+    } , (e) => {
+        res.status(400).send(e)
+    });
+})
 
 app.post('/checkregister',function(req ,res){ 
     if(req.body.radio == "Government") {
@@ -204,6 +232,14 @@ app.post('/crechelist',function(req,res){
     });
 });
 
+app.get('/noticelist' ,(req , res) => {
+    Notice.find().then((notices) => {
+        res.send(notices);
+    } ,(e) => {
+        res.status(400).send(e);
+    })
+});
+
 app.post('/childrenlist',function(req,res){
     Parent.find({},function(err,r){
         if(err) console.log("Error");
@@ -236,12 +272,10 @@ app.post('/govregister',(req ,res) => {
 });
 
 app.post('/parentregister',(req ,res) => { 
-    console.log(req.body);
     Parent.find({ email : req.body.email}).then((parent) => {
         if (parent.length < 1) {
             return res.status(401).json({message: "Auth failed"});
         }
-        console.log(parent[0])
         var p = parent[0];
         p.name = req.body.name;
         p.address = req.body.address;

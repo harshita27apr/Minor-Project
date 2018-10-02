@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Notice} from '../notice'
+import { ContactService } from '../contact.service';
+
 
 @Component({
   selector: 'app-addnotice',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddnoticeComponent implements OnInit {
 
-  constructor() { }
+  not = new Notice('','');
+  res;
+
+
+  constructor( private contser : ContactService) { }
 
   ngOnInit() {
+  }
+
+  notice(title,description) {
+    this.contser.addnotice(title,description).subscribe(res => this.res = res)
   }
 
 }

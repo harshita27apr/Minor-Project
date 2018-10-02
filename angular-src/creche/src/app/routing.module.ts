@@ -21,6 +21,7 @@ import { AddfacultyComponent } from './addfaculty/addfaculty.component';
 import { ChildrenComponent } from './children/children.component';
 import { FacultyComponent } from './faculty/faculty.component';
 import { ComplainsComponent } from './complains/complains.component';
+import { NoticeComponent } from './notice/notice.component';
 
 const routes : Routes =[
     { path :'', pathMatch :'full' , component : HomeComponent },
@@ -42,7 +43,8 @@ const routes : Routes =[
     {path : 'addfaculty' , component : AddfacultyComponent},
     {path : 'children' , component : ChildrenComponent},
     {path : 'faculty' , component : FacultyComponent},
-    {path : 'complains' , component : ComplainsComponent}
+    {path : 'complains' , component : ComplainsComponent},
+    {path : 'notice' , component : NoticeComponent},
 ];
 
 

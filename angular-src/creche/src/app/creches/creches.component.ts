@@ -12,48 +12,62 @@ export class CrechesComponent implements OnInit {
 
   arr;
   value;
-  flag = true;
+  flag = false;
+  flag1 = false;
+  flag2 = false;
+  flag3 = false;
 
   constructor( private register : RegisterService ) { }
   
   ngOnInit() 
   {
-    this.crechelist(); 
+    this.crechelist();
+    this.home();
+    this.getgov();
+    this.getpar();
+    this.getcre();
   }
 
   crechelist() {
-    this.register.crechelist().subscribe(res =>{
+    this.register.crechelist().subscribe(res => {
       this.arr = res });
   }
 
+  home() {
+    this.register.getv().subscribe(res => {
+      this.value = res;
+      if(this.value == "abc") {
+        this.flag = true;
+      }
+      else return false;
+    })
+  }
+
   getgov() {
-    this.register.getvalue().subscribe( res => {
+    this.register.getv().subscribe( res => {
       this.value = res;
       if(this.value == "Government") {
-         this.flag = false;
-         return true;
+         this.flag1 = true;
       }
       else return false;
     })
   }
 
   getpar() {
-    this.register.getvalue().subscribe(res => {
+    this.register.getv().subscribe(res => {
       this.value = res;
       if(this.value == "Parent") {
-        this.flag = false;
-        return true;
+        this.flag2 = true;
       }
         else return false;
     })
   }
 
   getcre() {
-    this.register.getvalue().subscribe(res => {
+    this.register.getv().subscribe(res => {
       this.value = res;
       if(this.value == "Creche") {
-       this.flag = false; 
-        return true;
+        this.flag3 = true;
       }
         else return false;
     })

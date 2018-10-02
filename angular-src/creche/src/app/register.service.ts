@@ -2,7 +2,7 @@ import { AddchildrenComponent } from './addchildren/addchildren.component';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {map, tap} from 'rxjs/operators'
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,17 +11,18 @@ export class RegisterService {
 
   value;
   LoggedWho; 
+
   constructor ( private http : HttpClient ) { }
 
   setvalue(v) {
     this.value = v;
   }
 
-  getvalue() : Observable<any> {
+  getv() : Observable<any> {
     if(this.value == null) {
-      this.value= "abc";
+      this.value = "abc";
     }
-    return (this.value);
+    return of (this.value);
   }
 
   check(array) : Observable<any> {

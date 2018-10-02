@@ -1,0 +1,68 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="/" >
+      <img src="assets/logo.jpg" width="50" height="50" alt="logo">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/register">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/loginform">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/creches">Creches</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/contact">Contact Us</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="card" style="background-color:transparent">
+  <div class="card-body">
+    <div class="container">
+    <h3 class="text-center text-dark">Add Complain</h3><br>
+    <form class= "form-horizontal" #complainForm="ngForm" style="background-color: transparent; text-align: center">
+  
+  <div class="row d-flex justify-content-center">
+    <div class="col-xs-4">
+        <div class="form-group">
+            <input type="text" class="form-control" #subject="ngModel" name="subject" placeholder="Enter the subject" id="subject" required minlength = "10"
+                  [(ngModel)]="comp.title">
+        <div *ngIf="subject.errors && (subject.dirty || subject.touched)">
+            <div [hidden]="!subject.errors.required">
+                <mark>Subject is required!</mark>
+            </div>
+            <div [hidden]="!subject.errors.minlength">
+              <mark>Subject must be at least 10 characters long.</mark>
+            </div>
+        </div>
+        </div>
+    </div>
+  </div>
+  
+    <div class="row d-flex justify-content-center">
+      <div class="col-xs-4">
+    <div class="form-group">
+      <textarea [(ngModel)]="comp.description" placeholder="Description" class="form-control" #description="ngModel" name="description" id="description"></textarea>
+    </div>
+    </div>
+    </div>
+  
+    <button type="submit" [disabled]="!complainForm.form.valid" (click)="complain(subject.value,description.value)" class="btn btn-primary btn-lg">Add Complain</button>
+  
+  </form>
+  </div>
+  </div>
+  </div>
