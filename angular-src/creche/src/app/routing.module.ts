@@ -22,10 +22,12 @@ import { ChildrenComponent } from './children/children.component';
 import { FacultyComponent } from './faculty/faculty.component';
 import { ComplainsComponent } from './complains/complains.component';
 import { NoticeComponent } from './notice/notice.component';
+import { LogoutComponent } from './logout/logout.component';
+import { CrechedetailComponent } from './crechedetail/crechedetail.component';
 
 const routes : Routes =[
-    { path :'', pathMatch :'full' , component : HomeComponent },
-    { path :'loginform', component : LoginComponent },
+    {path :'', pathMatch :'full' , component : HomeComponent },
+    {path :'loginform', component : LoginComponent },
     {path : 'contact' , component : ContactComponent},
     {path : 'creches' , component : CrechesComponent},
     {path : 'about' , component : AboutComponent},
@@ -45,6 +47,8 @@ const routes : Routes =[
     {path : 'faculty' , component : FacultyComponent},
     {path : 'complains' , component : ComplainsComponent},
     {path : 'notice' , component : NoticeComponent},
+    {path : 'logout' , component : LogoutComponent},
+    {path : 'crechedetails' , component : CrechedetailComponent }
 ];
 
 

@@ -11,6 +11,8 @@ export class RegisterService {
 
   value;
   LoggedWho; 
+  email;
+  arr;
 
   constructor ( private http : HttpClient ) { }
 
@@ -76,4 +78,16 @@ export class RegisterService {
   childrenlist() : Observable<any> {
     return this.http.post("http://localhost:3000/childrenlist",{}).pipe(map(response => response));
   }
-}
+
+  crecheemail(mail) {
+    this.email = mail;
+  }
+
+  getcreche() : Observable<any> {
+    this.arr = {
+      "email" : this.email
+    }
+    return this.http.post("http://localhost:3000/getcreche",this.arr).pipe(map(response => response));
+  }
+
+ }

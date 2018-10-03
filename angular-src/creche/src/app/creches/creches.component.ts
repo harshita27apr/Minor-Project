@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../register.service';
-import {map} from 'rxjs/operators'
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,7 +17,8 @@ export class CrechesComponent implements OnInit {
   flag2;
   flag3;
 
-  constructor( private register : RegisterService ) { }
+  constructor( private register : RegisterService,
+  private router : Router ) { }
   
   ngOnInit() 
   {
@@ -34,7 +35,6 @@ export class CrechesComponent implements OnInit {
   }
 
   home() {
-    this.flag = false; 
     this.register.getv().subscribe(res => {
       this.value = res;
       if(this.value == "abc") {
@@ -45,7 +45,6 @@ export class CrechesComponent implements OnInit {
   }
 
   getgov() {
-    this.flag1 = false
     this.register.getv().subscribe( res => {
       this.value = res;
       if(this.value == "Government") {
@@ -56,7 +55,6 @@ export class CrechesComponent implements OnInit {
   }
 
   getpar() {
-    this.flag2 = false;
     this.register.getv().subscribe(res => {
       this.value = res;
       if(this.value == "Parent") {
@@ -75,6 +73,11 @@ export class CrechesComponent implements OnInit {
       }
         else return false;
     })
+  }
+
+  details(email) {
+    this.register.crecheemail(email);
+    this.router.navigate(['/crechedetails']);
   }
 
 }

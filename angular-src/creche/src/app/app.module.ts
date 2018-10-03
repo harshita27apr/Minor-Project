@@ -29,6 +29,8 @@ import { AddnoticeComponent } from './addnotice/addnotice.component';
 import { ComplainsComponent } from './complains/complains.component';
 import { AddcomplainComponent } from './addcomplain/addcomplain.component';
 import { NoticeComponent } from './notice/notice.component';
+import { LogoutComponent } from './logout/logout.component';
+import { CrechedetailComponent } from './crechedetail/crechedetail.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { NoticeComponent } from './notice/notice.component';
     AddnoticeComponent,
     ComplainsComponent,
     AddcomplainComponent,
-    NoticeComponent
+    NoticeComponent,
+    LogoutComponent,
+    CrechedetailComponent
   ],
   imports: [
     BrowserModule,

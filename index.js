@@ -225,12 +225,14 @@ app.post('/sendRegisterMail',function(req,res){
     }
 });
 
-app.post('/crechelist',function(req,res){
-    Creche.find({},{description:1,cname:1},function(err,r){
-        if(err) console.log("Error");
-        else if(r) res.send(r);
-    });
+app.post('/crechelist' ,(req , res) => {
+    Creche.find().then((cre) => {
+        res.send(cre);
+    } ,(e) => {
+        res.status(400).send(e);
+    })
 });
+
 
 app.get('/noticelist' ,(req , res) => {
     Notice.find().then((notices) => {
@@ -349,6 +351,15 @@ app.post('/login',function(req,res){
             }
         });
     }
+});
+
+app.post('/getcreche' ,(req,res) => {
+    Creche.find({ email : req.body.email}).then((cre) => {
+        var c = cre[0];
+        res.send(c);
+    } ,(err) => {
+        res.status(400).send(err);
+    })
 });
 
 app.listen(3000,(err, res) => {

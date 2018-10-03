@@ -42,19 +42,19 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/">Home</a>
+        <a class="nav-link" routerLink="/govhome">Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/creches">Creches</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/addadmin">Add Admin</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" routerLink="/addcreche">Add Creche</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/">Logout</a>
+        <a class="nav-link" routerLink="/addadmin">Add Admin</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/logout">Logout</a>
       </li>
     </ul>
   </div>
@@ -105,22 +105,22 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/">Home</a>
+        <a class="nav-link" routerLink="/crechehome">Home</a>
       </li>
       <li class="nav-item">
           <a class="nav-link" routerLink="/creches">Creches</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" routerLink="/addchildren">Add Children </a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" routerLink="/addfaculty">Add Faculty</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/addchildren">Add children </a>
+        <a class="nav-link" routerLink="/faculty">Faculty</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/children">Children</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/faculty">Faculty</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/addnotice">Add Notice</a>
@@ -132,7 +132,7 @@
         <a class="nav-link" routerLink="/complains">Complains</a>
       </li>
       <li class="nav-item"> 
-        <a class="nav-link" routerLink="/">Logout</a>
+        <a class="nav-link" routerLink="/logout">Logout</a>
       </li>
     </ul>
   </div>
@@ -141,7 +141,8 @@
 
 <div>
   <li *ngFor="let a of arr">
-    <h2>{{a.cname}}</h2>
+    <p>{{a.cname}}</p>
     <p>{{a.description}}</p>
+    <button class="btn btn-primary btn-sm" (click) ="details(a.email)" type="button">View</button>
   </li>
 </div>
