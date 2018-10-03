@@ -10,6 +10,8 @@ export class ContactService {
 
   email;
   arr;
+  a;
+  e;
 
   constructor(
     private http : HttpClient
@@ -32,8 +34,25 @@ export class ContactService {
     this.email = email;
   }
 
+  getparent(email) {
+    return this.http.get('http://localhost:3000/getparent',email).pipe(map(res => res));
+  }
+
   noticelist() : Observable<any> {
     return this.http.get('http://localhost:3000/noticelist').pipe(map(response => response));
+  }
+
+  complain() : Observable<any> {
+    return this.http.get('http://localhost:3000/complainlist').pipe(map(response => response));
+  }
+
+  addcomplain(subject,description) : Observable<any> {
+    this.a = {
+      "subject" : subject,
+      "description" : description,
+      "email" : this.e
+    }
+    return this.http.post('http://localhost:3000/complain',this.a).pipe(map(response => response));
   }
 
 

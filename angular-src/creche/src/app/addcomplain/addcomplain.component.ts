@@ -18,7 +18,7 @@ export class AddcomplainComponent implements OnInit {
   }
 
   complain(subject,description) {
-    // this.con.addcomplain(subject,description).subscribe(res => this.res = res)
+    this.con.addcomplain(subject,description).subscribe(res => this.res = res);
   }
 
 }

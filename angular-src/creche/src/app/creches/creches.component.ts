@@ -12,10 +12,10 @@ export class CrechesComponent implements OnInit {
 
   arr;
   value;
-  flag = false;
-  flag1 = false;
-  flag2 = false;
-  flag3 = false;
+  flag;
+  flag1;
+  flag2;
+  flag3;
 
   constructor( private register : RegisterService ) { }
   
@@ -34,6 +34,7 @@ export class CrechesComponent implements OnInit {
   }
 
   home() {
+    this.flag = false; 
     this.register.getv().subscribe(res => {
       this.value = res;
       if(this.value == "abc") {
@@ -44,6 +45,7 @@ export class CrechesComponent implements OnInit {
   }
 
   getgov() {
+    this.flag1 = false
     this.register.getv().subscribe( res => {
       this.value = res;
       if(this.value == "Government") {
@@ -54,6 +56,7 @@ export class CrechesComponent implements OnInit {
   }
 
   getpar() {
+    this.flag2 = false;
     this.register.getv().subscribe(res => {
       this.value = res;
       if(this.value == "Parent") {
@@ -64,6 +67,7 @@ export class CrechesComponent implements OnInit {
   }
 
   getcre() {
+    this.flag3 = false;
     this.register.getv().subscribe(res => {
       this.value = res;
       if(this.value == "Creche") {

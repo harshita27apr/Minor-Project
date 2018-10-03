@@ -240,6 +240,14 @@ app.get('/noticelist' ,(req , res) => {
     })
 });
 
+app.get('/complainlist' ,(req , res) => {
+    Complain.find().then((complain) => {
+        res.send(complain);
+    } ,(e) => {
+        res.status(400).send(e);
+    })
+});
+
 app.post('/childrenlist',function(req,res){
     Parent.find({},function(err,r){
         if(err) console.log("Error");

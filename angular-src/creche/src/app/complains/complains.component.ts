@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ContactService } from '../contact.service';
 
 @Component({
   selector: 'app-complains',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ComplainsComponent implements OnInit {
 
-  constructor() { }
+  arr;
+  res;
+
+  constructor( private contact : ContactService) { }
 
   ngOnInit() {
+    this.complist();
+  }
+
+  complist() {
+    this.contact.complain().subscribe(res => {
+      this.arr = res });
   }
 
 }
