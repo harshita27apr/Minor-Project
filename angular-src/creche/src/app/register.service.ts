@@ -13,6 +13,9 @@ export class RegisterService {
   LoggedWho; 
   email;
   arr;
+  e;
+  a1;
+  a2;
 
   constructor ( private http : HttpClient ) { }
 
@@ -72,11 +75,17 @@ export class RegisterService {
   }
 
   facultylist() : Observable<any> {
-    return this.http.post("http://localhost:3000/facultylist",{}).pipe(map(response => response));
+    this.a1 = {
+      "email" : this.e
+    }
+    return this.http.post("http://localhost:3000/facultylist",this.a1).pipe(map(response => response));
   }
 
   childrenlist() : Observable<any> {
-    return this.http.post("http://localhost:3000/childrenlist",{}).pipe(map(response => response));
+    this.a2 = {
+      "email" : this.e
+    }
+    return this.http.post("http://localhost:3000/childrenlist",this.a2).pipe(map(response => response));
   }
 
   crecheemail(mail) {
@@ -89,5 +98,10 @@ export class RegisterService {
     }
     return this.http.post("http://localhost:3000/getcreche",this.arr).pipe(map(response => response));
   }
+
+  setcreche(email) {
+    this.e = email;
+  }
+
 
  }

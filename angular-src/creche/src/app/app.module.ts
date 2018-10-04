@@ -31,6 +31,11 @@ import { AddcomplainComponent } from './addcomplain/addcomplain.component';
 import { NoticeComponent } from './notice/notice.component';
 import { LogoutComponent } from './logout/logout.component';
 import { CrechedetailComponent } from './crechedetail/crechedetail.component';
+import { AttendanceComponent } from './attendance/attendance.component';
+import { EntryattendanceComponent } from './entryattendance/entryattendance.component';
+import { ExitattendanceComponent } from './exitattendance/exitattendance.component';
+import { HealthattendanceComponent } from './healthattendance/healthattendance.component';
+import { ImmunisationattendanceComponent } from './immunisationattendance/immunisationattendance.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +63,12 @@ import { CrechedetailComponent } from './crechedetail/crechedetail.component';
     AddcomplainComponent,
     NoticeComponent,
     LogoutComponent,
-    CrechedetailComponent
+    CrechedetailComponent,
+    AttendanceComponent,
+    EntryattendanceComponent,
+    ExitattendanceComponent,
+    HealthattendanceComponent,
+    ImmunisationattendanceComponent
   ],
   imports: [
     BrowserModule,

@@ -24,6 +24,11 @@ import { ComplainsComponent } from './complains/complains.component';
 import { NoticeComponent } from './notice/notice.component';
 import { LogoutComponent } from './logout/logout.component';
 import { CrechedetailComponent } from './crechedetail/crechedetail.component';
+import { AttendanceComponent } from './attendance/attendance.component';
+import { EntryattendanceComponent } from './entryattendance/entryattendance.component';
+import { ExitattendanceComponent } from './exitattendance/exitattendance.component';
+import { ImmunisationattendanceComponent } from './immunisationattendance/immunisationattendance.component';
+import { HealthattendanceComponent } from './healthattendance/healthattendance.component';
 
 const routes : Routes =[
     {path :'', pathMatch :'full' , component : HomeComponent },
@@ -48,7 +53,12 @@ const routes : Routes =[
     {path : 'complains' , component : ComplainsComponent},
     {path : 'notice' , component : NoticeComponent},
     {path : 'logout' , component : LogoutComponent},
-    {path : 'crechedetails' , component : CrechedetailComponent }
+    {path : 'crechedetails' , component : CrechedetailComponent },
+    { path : 'attendance' , component : AttendanceComponent},
+    { path : 'entryattendance', component : EntryattendanceComponent},
+    { path : 'exitattendance' , component : ExitattendanceComponent },
+    { path : 'immunattendance' , component : ImmunisationattendanceComponent},
+    {path : 'healthattendance' , component : HealthattendanceComponent}
 ];
 
 

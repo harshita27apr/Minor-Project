@@ -12,6 +12,7 @@ export class ContactService {
   arr;
   a;
   e;
+  array;
 
   constructor(
     private http : HttpClient
@@ -39,7 +40,10 @@ export class ContactService {
   }
 
   noticelist() : Observable<any> {
-    return this.http.get('http://localhost:3000/noticelist').pipe(map(response => response));
+    this.array = {
+      "email" : this.email
+    }
+    return this.http.post('http://localhost:3000/noticelist',this.array).pipe(map(response => response));
   }
 
   complain() : Observable<any> {

@@ -233,9 +233,8 @@ app.post('/crechelist' ,(req , res) => {
     })
 });
 
-
-app.get('/noticelist' ,(req , res) => {
-    Notice.find().then((notices) => {
+app.post('/noticelist' ,(req , res) => {
+    Notice.find({ crecheEmail : req.body.email}).then((notices) => {
         res.send(notices);
     } ,(e) => {
         res.status(400).send(e);
@@ -251,14 +250,14 @@ app.get('/complainlist' ,(req , res) => {
 });
 
 app.post('/childrenlist',function(req,res){
-    Parent.find({},function(err,r){
+    Parent.find({ crecheEmail : req.body.email},function(err,r){
         if(err) console.log("Error");
         else if(r) res.send(r);
     });
 });
 
 app.post('/facultylist',function(req,res){
-    Faculty.find({},function(err,r){
+    Faculty.find({ crecheEmail : req.body.email},function(err,r){
         if(err) console.log("Error");
         else if(r) res.send(r);
     });

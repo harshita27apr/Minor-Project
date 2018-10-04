@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" routerLink="/" >
     <img src="assets/logo.jpg" width="50" height="50" alt="logo">
@@ -9,7 +8,7 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/govhome">Home</a>
+        <a class="nav-link" routerLink="/crechehome">Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/creches">Creches</a>
@@ -44,3 +43,14 @@
     </ul>
   </div>
 </nav>
+
+<div>
+  <a routerLink = '/entryattendance'>Entry Attendance</a><br>
+  <a routerLink = '/exitattendance'>Exit Attendance</a><br>
+  <a routerLink = '/immunattendance'>Immunisation Attendance</a><br>
+  <a routerLink = '/healthattendance'>Health Attendance</a><br>
+</div>
+
+<div>
+  <button style="text-align: center" class="btn btn-primary" (click)="goBack()">Back</button>
+</div>

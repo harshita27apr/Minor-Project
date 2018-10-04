@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
       else if (radio == "Creche" && this.res.result == true) {
         this.register.setvalue("Creche")
         this.contact.setcreche(email);
+        this.register.setcreche(email);
         this.router.navigate(['/crechehome']);
       }
     })
