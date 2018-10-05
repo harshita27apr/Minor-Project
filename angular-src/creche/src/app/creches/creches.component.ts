@@ -76,7 +76,7 @@ export class CrechesComponent implements OnInit {
   }
 
   details(email) {
-    this.register.crecheemail(email);
+    this.register.crecheEmailSet(email);
     this.router.navigate(['/crechedetails']);
   }
 

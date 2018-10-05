@@ -29,11 +29,11 @@ app.post('/contact',function(req,res){
         to : "national.creche@gmail.com",
         from : "national.creche@gmail.com",
         subject : "Contact Admin",
-        html : req.body.description
+        html : "From <b>" + req.body.name + ",</b><br>" + req.body.description + "<br><br>The following request has been received from <br><b>" + req.body.email + "</b><br><br>Revert back on behalf of National Creche."
     }
     smtpTransport.sendMail(mailOptions, function(error, response){
         if(error) res.end("error");
-        else res.end("sent");
+        else res.json({"result":true});
     })
 })
 });
@@ -55,7 +55,8 @@ app.post('/complain' , function(req,res) {
     var comp = new Complain ({
         subject : req.body.subject,
         description : req.body.description,
-        crecheEmail : req.body.email
+        crecheEmail : req.body.crecheEmail,
+        parentEmail : req.body.parentEmail
     });
     comp.save().then((doc) => {
         res.send(doc);
@@ -64,7 +65,7 @@ app.post('/complain' , function(req,res) {
     });
 })
 
-app.post('/checkregister',function(req ,res){ 
+app.post('/checkregister',function(req ,res){
     if(req.body.radio == "Government") {
     Government.find({ email : req.body.email}).then((gov) => {
         if (gov.length < 1) {
@@ -233,20 +234,18 @@ app.post('/crechelist' ,(req , res) => {
     })
 });
 
-app.post('/noticelist' ,(req , res) => {
-    Notice.find({ crecheEmail : req.body.email}).then((notices) => {
-        res.send(notices);
-    } ,(e) => {
-        res.status(400).send(e);
+app.post('/noticelist' ,function(req,res){
+    Notice.find({ crecheEmail : req.body.email},function(err,r){
+        if(err) console.log("Notice List Error");
+        else res.json({"result":r});
     })
 });
 
-app.get('/complainlist' ,(req , res) => {
-    Complain.find().then((complain) => {
-        res.send(complain);
-    } ,(e) => {
-        res.status(400).send(e);
-    })
+app.post('/complainlist' ,function(req,res){
+    Complain.find({crecheEmail:req.body.crecehEmail},function(err,r){
+        if(err) console.log("Error in Comaplain List ",err);
+        else res.json({"result":r});
+    });
 });
 
 app.post('/childrenlist',function(req,res){
@@ -268,7 +267,6 @@ app.post('/govregister',(req ,res) => {
         if (gov.length < 1) {
             return res.status(401).json({message: "Auth failed"});
         }
-        console.log(gov[0])
         var g = gov[0];
         g.name = req.body.name;
         g.address = req.body.address;
@@ -344,7 +342,7 @@ app.post('/login',function(req,res){
             else if(r){
                 bcrypt.compare(req.body.password,r.password,function(error,result){
                     if(error) console.log("Error : ",error);
-                    else if(result) return res.json({"result":true , "name":r.cname , "email":r.email});
+                    else if(result) return res.json({"result":true , "name":r.cname , "email":r.email , "crecheEmail" : r.crecheEmail });
                     else return res.json({"result":false});
                 });
             }
@@ -352,7 +350,7 @@ app.post('/login',function(req,res){
     }
 });
 
-app.post('/getcreche' ,(req,res) => {
+app.post('/getCreche' ,(req,res) => {
     Creche.find({ email : req.body.email}).then((cre) => {
         var c = cre[0];
         res.send(c);

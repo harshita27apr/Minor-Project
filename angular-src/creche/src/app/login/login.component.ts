@@ -11,8 +11,6 @@ import { ContactService} from '../contact.service'
 export class LoginComponent implements OnInit {
 
   arr;
-  res;
-
   constructor(private register : RegisterService,
     private contact : ContactService,
   private router : Router) { }
@@ -26,19 +24,20 @@ export class LoginComponent implements OnInit {
       "password" : pass,
       "radio" : radio
      }
-     this.register.login(this.arr).subscribe(res => { this.res =res
-      if(radio == "Government" && this.res.result == true) {
+     this.register.login(this.arr).subscribe(res => {
+      if(radio == "Government" && res.result == true) {
         this.register.setvalue("Government")
         this.router.navigate(['/govhome']);
       }
-      else if (radio == "Parent" && this.res.result == true) {
+      else if (radio == "Parent" && res.result == true) {
         this.register.setvalue("Parent")
+        this.contact.setCreche(res.crecheEmail);
+        this.contact.setParent(res.email);
         this.router.navigate(['/parenthome']);
       }
-      else if (radio == "Creche" && this.res.result == true) {
+      else if (radio == "Creche" && res.result == true) {
         this.register.setvalue("Creche")
-        this.contact.setcreche(email);
-        this.register.setcreche(email);
+        this.contact.setCreche(email);
         this.router.navigate(['/crechehome']);
       }
     })

@@ -26,7 +26,7 @@ export class NoticeComponent implements OnInit {
 
   nlist() {
     this.cont.noticelist().subscribe(res => {
-      this.arr = res });
+      this.arr = res.result });
   }
 
   getpar() {

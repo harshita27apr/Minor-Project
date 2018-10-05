@@ -9,6 +9,9 @@ var Complain = mongoose.model('Complain' ,{
     crecheEmail : {
         type : String,
     },
+    parentEmail : {
+        type : String,
+    },
     description : {
         type : String
     }

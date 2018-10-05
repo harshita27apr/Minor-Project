@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var Notice = mongoose.model('Notice' ,{
     title : {
         type : String,
-        minlength : 10,
+        minlength : 4,
         trim : true
     },
     crecheEmail : {

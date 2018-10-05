@@ -16,12 +16,11 @@ export class CrechedetailComponent implements OnInit {
   private location : Location) { }
 
   ngOnInit() {
-    this.getcreche();
+    this.getCreche();
   }
 
-  getcreche() {
-    this.register.getcreche().subscribe(res => { this.response = res
-    console.log(this.response)});
+  getCreche() {
+    this.register.getCreche().subscribe(res => { this.response = res; });
   }
 
   goBack() {

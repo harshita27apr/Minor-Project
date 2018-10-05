@@ -11,11 +11,7 @@ export class RegisterService {
 
   value;
   LoggedWho; 
-  email;
-  arr;
-  e;
-  a1;
-  a2;
+  crecheEmail;
 
   constructor ( private http : HttpClient ) { }
 
@@ -75,33 +71,18 @@ export class RegisterService {
   }
 
   facultylist() : Observable<any> {
-    this.a1 = {
-      "email" : this.e
-    }
-    return this.http.post("http://localhost:3000/facultylist",this.a1).pipe(map(response => response));
+    return this.http.post("http://localhost:3000/facultylist",{"email":this.LoggedWho.email}).pipe(map(response => response));
   }
 
   childrenlist() : Observable<any> {
-    this.a2 = {
-      "email" : this.e
-    }
-    return this.http.post("http://localhost:3000/childrenlist",this.a2).pipe(map(response => response));
+    return this.http.post("http://localhost:3000/childrenlist",{"email":this.LoggedWho.email}).pipe(map(response => response));
   }
 
-  crecheemail(mail) {
-    this.email = mail;
+  crecheEmailSet(mail) {
+    this.crecheEmail = mail;
   }
 
-  getcreche() : Observable<any> {
-    this.arr = {
-      "email" : this.email
-    }
-    return this.http.post("http://localhost:3000/getcreche",this.arr).pipe(map(response => response));
+  getCreche() : Observable<any> {
+    return this.http.post("http://localhost:3000/getCreche",{"email":this.crecheEmail}).pipe(map(response => response));
   }
-
-  setcreche(email) {
-    this.e = email;
-  }
-
-
  }
