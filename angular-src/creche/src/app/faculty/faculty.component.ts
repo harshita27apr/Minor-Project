@@ -12,6 +12,9 @@ export class FacultyComponent implements OnInit {
 
   arr;
   res;
+  value;
+  flag;
+  flag2;
 
   constructor(private register : RegisterService,
     private contact : ContactService,
@@ -20,6 +23,8 @@ export class FacultyComponent implements OnInit {
   ngOnInit() 
   {
     this.facultylist(); 
+    this.getcre();
+    this.getpar();
   }
 
   facultylist() {
@@ -30,5 +35,26 @@ export class FacultyComponent implements OnInit {
   details(email) {
     this.contact.setFacultyEmail(email);
     this.router.navigate(['/facultydetail'])
+  }
+
+
+  getpar() {
+    this.register.getv().subscribe(res => {
+      this.value = res;
+      if(this.value == "Parent") {
+        this.flag2 = true;
+      }
+        else return false;
+    })
+  }
+
+  getcre() {
+    this.register.getv().subscribe(res => {
+      this.value = res;
+      if(this.value == "Creche") {
+        this.flag = true;
+      }
+        else return false;
+    })
   }
 }

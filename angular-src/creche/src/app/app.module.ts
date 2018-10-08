@@ -38,6 +38,7 @@ import { HealthattendanceComponent } from './healthattendance/healthattendance.c
 import { ImmunisationattendanceComponent } from './immunisationattendance/immunisationattendance.component';
 import { ChildrendetailComponent } from './childrendetail/childrendetail.component';
 import { FacultydetailComponent } from './facultydetail/facultydetail.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { FacultydetailComponent } from './facultydetail/facultydetail.component'
     HealthattendanceComponent,
     ImmunisationattendanceComponent,
     ChildrendetailComponent,
-    FacultydetailComponent
+    FacultydetailComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,7 @@ export class NoticeComponent implements OnInit {
   res;
   value;
   flag2 = false;
-  flag3 = false;
+  flag = false;
 
   constructor( private cont : ContactService,
     private register : RegisterService) { }
@@ -43,7 +43,7 @@ export class NoticeComponent implements OnInit {
     this.register.getv().subscribe(res => {
       this.value = res;
       if(this.value == "Creche") {
-        this.flag3 = true;
+        this.flag = true;
       }
         else return false;
     })

@@ -31,6 +31,9 @@ import { ImmunisationattendanceComponent } from './immunisationattendance/immuni
 import { HealthattendanceComponent } from './healthattendance/healthattendance.component';
 import { ChildrendetailComponent } from './childrendetail/childrendetail.component';
 import { FacultydetailComponent } from './facultydetail/facultydetail.component';
+import { AddcomplainComponent } from './addcomplain/addcomplain.component';
+import { Profile } from 'selenium-webdriver/firefox';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes : Routes =[
     {path :'', pathMatch :'full' , component : HomeComponent },
@@ -62,7 +65,9 @@ const routes : Routes =[
     { path : 'immunattendance' , component : ImmunisationattendanceComponent},
     {path : 'healthattendance' , component : HealthattendanceComponent},
     { path : 'childrendetail' , component : ChildrendetailComponent},
-    { path : 'facultydetail' , component : FacultydetailComponent}
+    { path : 'facultydetail' , component : FacultydetailComponent},
+    {path : 'addcomplain', component : AddcomplainComponent},
+    {path : 'profile' , component : ProfileComponent}
 ];
 
 

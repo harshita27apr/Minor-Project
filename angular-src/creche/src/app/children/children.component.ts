@@ -12,6 +12,9 @@ export class ChildrenComponent implements OnInit {
 
   arr;
   res;
+  value;
+  flag;
+  flag2;
 
   constructor(private register : RegisterService,
   private router : Router,
@@ -20,6 +23,8 @@ export class ChildrenComponent implements OnInit {
   ngOnInit() 
   {
     this.childrenlist(); 
+    this.getcre();
+    this.getpar();
   }
 
   childrenlist() {
@@ -31,6 +36,28 @@ export class ChildrenComponent implements OnInit {
     this.router.navigate(['/childrendetail']);
     this.contact.setParentEmail(email);
 
+  }
+
+  getpar() {
+    this.flag2= false;
+    this.register.getv().subscribe(res => {
+      this.value = res;
+      if(this.value == "Parent") {
+        this.flag2 = true;
+      }
+        else return false;
+    })
+  }
+
+  getcre() {
+    this.flag = false;
+    this.register.getv().subscribe(res => {
+      this.value = res;
+      if(this.value == "Creche") {
+        this.flag = true;
+      }
+        else return false;
+    })
   }
 
 
