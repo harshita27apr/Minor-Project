@@ -42,7 +42,7 @@ app.post('/notice' , function(req,res) {
     var not = new Notice ({
         title : req.body.title,
         description : req.body.description,
-        crecheEmail : req.body.email
+        crecheEmail : req.body.crecheEmail
     });
     not.save().then((doc) => {
         res.send(doc);
@@ -348,6 +348,24 @@ app.post('/login',function(req,res){
             }
         });
     }
+});
+
+app.post('/childrendetail' ,(req,res) => {
+    Parent.find({ email : req.body.email}).then((par) => {
+        var p = par[0];
+        res.send(p);
+    } ,(err) => {
+        res.status(400).send(err);
+    })
+});
+
+app.post('/facultydetail' ,(req,res) => {
+    Faculty.find({ email : req.body.email}).then((fac) => {
+        var f = fac[0];
+        res.send(f);
+    } ,(err) => {
+        res.status(400).send(err);
+    })
 });
 
 app.post('/getCreche' ,(req,res) => {

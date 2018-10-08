@@ -36,6 +36,8 @@ import { EntryattendanceComponent } from './entryattendance/entryattendance.comp
 import { ExitattendanceComponent } from './exitattendance/exitattendance.component';
 import { HealthattendanceComponent } from './healthattendance/healthattendance.component';
 import { ImmunisationattendanceComponent } from './immunisationattendance/immunisationattendance.component';
+import { ChildrendetailComponent } from './childrendetail/childrendetail.component';
+import { FacultydetailComponent } from './facultydetail/facultydetail.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,9 @@ import { ImmunisationattendanceComponent } from './immunisationattendance/immuni
     EntryattendanceComponent,
     ExitattendanceComponent,
     HealthattendanceComponent,
-    ImmunisationattendanceComponent
+    ImmunisationattendanceComponent,
+    ChildrendetailComponent,
+    FacultydetailComponent
   ],
   imports: [
     BrowserModule,

@@ -49,6 +49,7 @@
     <li *ngFor="let a of arr">
       <h2>{{a.name}}</h2>
       <p>{{a.cname}}</p>
+      <button class="btn btn-primary btn-sm" (click) ="details(a.email)" type="button">View</button>
     </li>
   </div>
   

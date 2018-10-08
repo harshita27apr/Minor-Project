@@ -29,6 +29,8 @@ import { EntryattendanceComponent } from './entryattendance/entryattendance.comp
 import { ExitattendanceComponent } from './exitattendance/exitattendance.component';
 import { ImmunisationattendanceComponent } from './immunisationattendance/immunisationattendance.component';
 import { HealthattendanceComponent } from './healthattendance/healthattendance.component';
+import { ChildrendetailComponent } from './childrendetail/childrendetail.component';
+import { FacultydetailComponent } from './facultydetail/facultydetail.component';
 
 const routes : Routes =[
     {path :'', pathMatch :'full' , component : HomeComponent },
@@ -58,7 +60,9 @@ const routes : Routes =[
     { path : 'entryattendance', component : EntryattendanceComponent},
     { path : 'exitattendance' , component : ExitattendanceComponent },
     { path : 'immunattendance' , component : ImmunisationattendanceComponent},
-    {path : 'healthattendance' , component : HealthattendanceComponent}
+    {path : 'healthattendance' , component : HealthattendanceComponent},
+    { path : 'childrendetail' , component : ChildrendetailComponent},
+    { path : 'facultydetail' , component : FacultydetailComponent}
 ];
 
 

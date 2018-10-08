@@ -11,6 +11,8 @@ export class ContactService {
   crecheEmail;
   parentEmail;
   arr;
+  parentEmail2;
+  FacultyEmail;
 
   constructor(
     private http : HttpClient
@@ -58,4 +60,22 @@ export class ContactService {
     }
     return this.http.post('http://localhost:3000/complain',this.arr).pipe(map(response => response));
   }
+
+  setParentEmail(email) {
+    this.parentEmail2 = email;
+  }
+
+  getParentDetail() : Observable<any> {
+    return this.http.post("http://localhost:3000/childrendetail",{"email":this.parentEmail2}).pipe(map(response => response));
+  }
+
+  setFacultyEmail(email) {
+    this.FacultyEmail = email;
+    console.log(this.FacultyEmail)
+  }
+
+  getFacultyDetail() : Observable<any> {
+    return this.http.post("http://localhost:3000/facultydetail",{"email":this.FacultyEmail}).pipe(map(response => response));
+  }
+
 }

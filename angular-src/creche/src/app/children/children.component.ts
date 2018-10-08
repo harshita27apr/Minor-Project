@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../register.service';
+import { Router } from '@angular/router';
+import { ContactService } from '../contact.service';
 
 @Component({
   selector: 'app-children',
@@ -11,7 +13,9 @@ export class ChildrenComponent implements OnInit {
   arr;
   res;
 
-  constructor(private register : RegisterService) { }
+  constructor(private register : RegisterService,
+  private router : Router,
+  private contact : ContactService) { }
 
   ngOnInit() 
   {
@@ -22,5 +26,12 @@ export class ChildrenComponent implements OnInit {
     this.register.childrenlist().subscribe(res =>{
       this.arr = res });
   }
+
+  details(email) {
+    this.router.navigate(['/childrendetail']);
+    this.contact.setParentEmail(email);
+
+  }
+
 
 }
