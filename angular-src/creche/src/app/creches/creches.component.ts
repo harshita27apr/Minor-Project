@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class CrechesComponent implements OnInit {
 
-  arr;
+  arr = [];
   value;
   flag;
   flag1;

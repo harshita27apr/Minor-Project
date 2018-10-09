@@ -9,18 +9,16 @@ import { Location } from '@angular/common';
 })
 export class FacultydetailComponent implements OnInit {
 
-  response;
+  response = [];
 
-  constructor( private contact : ContactService,
-    private location : Location) { }
+  constructor( private contact : ContactService, private location : Location ) { }
 
   ngOnInit() {
     this.getDetail();
   }
 
   getDetail() {
-    this.contact.getFacultyDetail().subscribe(res => { this.response = res;
-    console.log(this.response) });
+    this.contact.getFacultyDetail().subscribe(res => { this.response = res });
   }
 
   goBack() {

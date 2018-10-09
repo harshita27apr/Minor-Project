@@ -46,7 +46,7 @@ export class RegisterService {
     return this.http.post("http://localhost:3000/login",array)
     .pipe(
       tap( incomingValue => this.LoggedWho = incomingValue ),
-      map( () => { return {"result":this.LoggedWho.result} } )
+      map( () => { return this.LoggedWho })
     );
   }
 

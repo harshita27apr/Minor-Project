@@ -10,26 +10,24 @@ import { ContactService } from '../contact.service';
 })
 export class ChildrenComponent implements OnInit {
 
-  arr;
+  arr = [];
   res;
   value;
   flag;
   flag2;
 
-  constructor(private register : RegisterService,
-  private router : Router,
-  private contact : ContactService) { }
+  constructor( private register : RegisterService, private router : Router, private contact : ContactService)  { }
 
   ngOnInit() 
-  {
-    this.childrenlist(); 
+  { 
     this.getcre();
     this.getpar();
+    this.childrenlist();
   }
 
   childrenlist() {
-    this.register.childrenlist().subscribe(res =>{
-      this.arr = res });
+    if(this.flag2) this.contact.childrenList().subscribe( res => { this.arr = res });
+    else this.register.childrenlist().subscribe( res => { this.arr = res });
   }
 
   details(email) {

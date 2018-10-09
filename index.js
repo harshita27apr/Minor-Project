@@ -377,6 +377,64 @@ app.post('/getCreche' ,(req,res) => {
     })
 });
 
+app.post('/sendAttendanceMail', function(req,res){
+    let smtpTransport = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: "national.creche@gmail.com", 
+            pass: "creche123"
+        }
+    });
+
+    var mailOptionsEntry = {
+        from : '"National Creche" <national.creche@gmail.com>',
+        to : req.body.email,
+        subject : "Student Received at National Creche.",
+        html : 
+    }
+    var mailOptionExit = {
+        from : '"National Creche" <national.creche@gmail.com>',
+        to : req.body.email,
+        subject : "Student leaving the premises.",
+        html : 
+    }
+    var healthAttendance = {
+        from : '"National Creche" <national.creche@gmail.com>',
+        to : req.body.email,
+        subject : "Health Checkup Drive at National Creche.",
+        html : 
+    }
+    var immunAttendance = {
+        from : '"National Creche" <national.creche@gmail.com>',
+        to : req.body.email,
+        subject : "Immunization Drive at National Creche.",
+        html : 
+    }
+
+    if(){
+        smtpTransport.sendMail(mailOptionsEntry,function(error,response){
+            if(error) console.log("Error : SMTP Transport MailOptionsEntry\n",error);
+        })};
+    
+    elif(){
+        smtpTransport.sendMail(mailOptionsExit,function(error,response){
+            if(error) console.log("Error : SMTP Transport MultipleOptionsExit\n",error);
+        });
+    };
+    elif(){
+        smtpTransport.sendMail(mailOptionsFaculty,function(error,response){
+            if(error) console.log("Error : SMTP Transport HealthAttendance\n",error);
+        });
+    };
+    elif(){
+        smtpTransport.sendMail(mailOptionsFaculty,function(error,response){
+            if(error) console.log("Error : SMTP Transport ImmunizationAtendance",error);
+        });
+    }
+});
+
 app.listen(3000,(err, res) => {
     if(err) return console.log("Unable to set up server",err);
     else console.log("Server is up on port 3000");

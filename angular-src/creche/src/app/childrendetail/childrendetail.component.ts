@@ -9,7 +9,7 @@ import { Location } from '@angular/common';
 })
 export class ChildrendetailComponent implements OnInit {
 
-  response;
+  response = [];
 
   constructor( private contact : ContactService,
     private location : Location) { }

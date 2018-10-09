@@ -10,33 +10,29 @@ import { Router } from '@angular/router';
 })
 export class FacultyComponent implements OnInit {
 
-  arr;
+  arr = [];
   res;
   value;
   flag;
   flag2;
 
-  constructor(private register : RegisterService,
-    private contact : ContactService,
-    private router : Router) { }
+  constructor( private register : RegisterService, private contact : ContactService, private router : Router ) { }
 
-  ngOnInit() 
-  {
-    this.facultylist(); 
+  ngOnInit()   { 
     this.getcre();
     this.getpar();
+    this.facultylist();
   }
 
   facultylist() {
-    this.register.facultylist().subscribe(res =>{
-      this.arr = res });
+    if(this.flag) this.register.facultylist().subscribe( res => { this.arr = res });
+    else this.contact.facultyList().subscribe( res => { this.arr = res });
   }
 
   details(email) {
     this.contact.setFacultyEmail(email);
-    this.router.navigate(['/facultydetail'])
+    this.router.navigate(['/facultydetail']);
   }
-
 
   getpar() {
     this.register.getv().subscribe(res => {

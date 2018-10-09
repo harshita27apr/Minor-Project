@@ -25,13 +25,15 @@ export class LoginComponent implements OnInit {
       "radio" : radio
      }
      this.register.login(this.arr).subscribe(res => {
+       console.log(res)
       if(radio == "Government" && res.result == true) {
         this.register.setvalue("Government")
         this.router.navigate(['/govhome']);
       }
       else if (radio == "Parent" && res.result == true) {
-        this.register.setvalue("Parent")
+        this.register.setvalue("Parent");
         this.contact.setParent(email);
+        this.contact.setCreche(res.crecheEmail);
         this.router.navigate(['/parenthome']);
       }
       else if (radio == "Creche" && res.result == true) {

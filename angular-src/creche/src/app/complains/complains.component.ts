@@ -8,7 +8,7 @@ import { ContactService } from '../contact.service';
 })
 export class ComplainsComponent implements OnInit {
 
-  arr;
+  arr=[];
   res;
 
   constructor( private contact : ContactService) { }

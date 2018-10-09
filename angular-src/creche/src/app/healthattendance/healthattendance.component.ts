@@ -9,10 +9,9 @@ import { Location } from '@angular/common';
 })
 export class HealthattendanceComponent implements OnInit {
 
-  arr;
+  arr = [];
   
-  constructor( private register : RegisterService,
-  private location : Location) { }
+  constructor( private register : RegisterService, private location : Location ) { }
 
   ngOnInit() 
   {

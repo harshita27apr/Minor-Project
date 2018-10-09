@@ -32,6 +32,7 @@ export class ContactService {
   }
 
   setCreche(email) {
+    console.log(email);
     this.crecheEmail = email;
   }
 
@@ -71,11 +72,18 @@ export class ContactService {
 
   setFacultyEmail(email) {
     this.FacultyEmail = email;
-    console.log(this.FacultyEmail)
   }
 
   getFacultyDetail() : Observable<any> {
     return this.http.post("http://localhost:3000/facultydetail",{"email":this.FacultyEmail}).pipe(map(response => response));
   }
 
+  childrenList() : Observable<any> {
+    return this.http.post("http://localhost:3000/childrenlist",{"email":this.crecheEmail}).pipe(map(response => response));
+  }
+
+  facultyList() : Observable<any> {
+    console.log("Entered Faculty List",this.crecheEmail);
+    return this.http.post("http://localhost:3000/facultylist",{"email":this.crecheEmail}).pipe(map(response => response));
+  }
 }
