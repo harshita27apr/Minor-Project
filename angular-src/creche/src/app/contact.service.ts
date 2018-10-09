@@ -58,6 +58,7 @@ export class ContactService {
       "crecheEmail" : this.crecheEmail,
       "parentEmail" : this.parentEmail
     }
+    console.log(this.crecheEmail,this.parentEmail)
     return this.http.post('http://localhost:3000/complain',this.arr).pipe(map(response => response));
   }
 

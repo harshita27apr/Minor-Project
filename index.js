@@ -258,9 +258,9 @@ app.post('/noticelist' ,function(req,res){
 });
 
 app.post('/complainlist' ,function(req,res){
-    Complain.find({crecheEmail:req.body.crecehEmail},function(err,r){
+    Complain.find({crecheEmail:req.body.crecheEmail},function(err,r){
         if(err) console.log("Error in Comaplain List ",err);
-        else res.json({"result":r});
+        else res.send(r);
     });
 });
 

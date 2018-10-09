@@ -1,12 +1,167 @@
+<div *ngIf="flag">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" routerLink="/" >
+            <img src="assets/logo.jpg" width="70" height="55" alt="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="nav">
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/register">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/loginform">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/creches">Creches</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/contact">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+  </nav><br><br>
+</div>
+
+<div *ngIf="flag1">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="/" >
+      <img src="assets/logo.jpg" width="70" height="55" alt="logo">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="nav">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/govhome">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/creches">Creches</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/addcreche">Add Creche</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/addadmin">Add Admin</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/logout">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav><br><br>
+</div>
+
+<div *ngIf="flag2">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="/" >
+      <img src="assets/logo.jpg" width="70" height="55" alt="logo">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="nav">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/parenthome">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/creches">Creches</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/children">Children</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/faculty">Faculty</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/profile">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/notice">Notice</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/addcomplain">Add Complain</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/logout">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav><br><br>
+</div>
+
+<div *ngIf="flag3"> 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="/" >
+      <img src="assets/logo.jpg" width="70" height="55" alt="logo">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="nav">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/crechehome">Home</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" routerLink="/creches">Creches</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/addchildren">Add Children </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/addfaculty">Add Faculty</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/faculty">Faculty</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/children">Children</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/addnotice">Add Notice</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/notice">Notice</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/attendance">Attendance</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/complains">Complains</a>
+      </li>
+      <li class="nav-item"> 
+        <a class="nav-link" routerLink="/logout">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav><br><br>
+</div>
+
+<h1 style = "text-align: center">{{response.cname | uppercase}}</h1><br>
+
 <div class="row">
   <div class="col-8">
-    <h1 style = "text-align: center">{{response.cname | uppercase}}</h1><br>
     <div><h3 style="font-size:25px">Description </h3><h4>{{response.description}}</h4></div><br>
     <div><h3 style="font-size:25px">Address </h3><h4>{{response.address}}</h4></div><br>
     <div><h3 style="font-size:25px">Mobile </h3><h4>{{response.mobile}}</h4></div><br>
     <div><h3 style="font-size:25px">Email </h3><h4>{{response.email}}</h4></div><br>
   </div>
+  <div class="col-4">
+      <img src="assets/download.png" alt="{{site.name}}">
+  </div>
 </div>
+
 <div>
-  <button style="text-align: center" class="btn btn-primary" (click)="goBack()">Back</button>
+  <button style="text-align: center"  class="btn btn-primary" (click)="goBack()">Back</button>
 </div>

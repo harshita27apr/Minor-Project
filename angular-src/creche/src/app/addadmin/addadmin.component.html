@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" routerLink="/" >
-      <img src="assets/logo.jpg" width="50" height="50" alt="logo">
+    <img src="assets/logo.jpg" width="70" height="55" alt="logo">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
+    <ul class="nav">
       <li class="nav-item active">
         <a class="nav-link" routerLink="/govhome">Home</a>
       </li>
@@ -25,6 +25,16 @@
     </ul>
   </div>
 </nav>
+
+<div class="row">
+<div class="col-6">
+  <img src="assets/admin.png" alt="image">
+</div>
+
+<div class= "col-6">
+    <div style="background-image: url('assets/card.jpg');background-repeat: no-repeat; height:550px;" >
+
+      <br><h2 class="text-center"><mark>Add Admin</mark></h2><br><br>
 
 <form class= "form-horizontal" #loginForm="ngForm" style="background-color: transparent; text-align: center" >
      
@@ -65,3 +75,7 @@
     <button type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid"
        (click) = "send(email.value,password.value)">Add Admin</button>
   </form>
+</div>
+  </div>
+
+  </div>

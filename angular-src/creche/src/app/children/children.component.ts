@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../register.service';
 import { Router } from '@angular/router';
 import { ContactService } from '../contact.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-children',
@@ -16,7 +17,9 @@ export class ChildrenComponent implements OnInit {
   flag;
   flag2;
 
-  constructor( private register : RegisterService, private router : Router, private contact : ContactService)  { }
+  constructor( private register : RegisterService, 
+    private router : Router, private contact : ContactService,
+  private location : Location)  { }
 
   ngOnInit() 
   { 
@@ -56,6 +59,10 @@ export class ChildrenComponent implements OnInit {
       }
         else return false;
     })
+  }
+
+  goBack() : void {
+    this.location.back();
   }
 
 

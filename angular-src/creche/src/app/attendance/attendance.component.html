@@ -1,12 +1,14 @@
+<div style="background-image: url('assets/attend.jpg');background-repeat: no-repeat; height:650px;" >
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" routerLink="/" >
-    <img src="assets/logo.jpg" width="50" height="50" alt="logo">
+    <img src="assets/logo.jpg" width="70" height="55" alt="logo">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
+    <ul class="nav">
       <li class="nav-item active">
         <a class="nav-link" routerLink="/crechehome">Home</a>
       </li>
@@ -44,13 +46,23 @@
   </div>
 </nav>
 
-<div>
-  <a routerLink = '/entryattendance'>Entry Attendance</a><br>
-  <a routerLink = '/exitattendance'>Exit Attendance</a><br>
-  <a routerLink = '/immunattendance'>Immunisation Attendance</a><br>
-  <a routerLink = '/healthattendance'>Health Attendance</a><br>
+<div class="card text-center" style="background-color:transparent">
+    <div class="card-body">
+      <h3 class="card-title">Attendance</h3>
+      <button class="btn btn-success btn-lg" routerLink = '/entryattendance'>Entry Attendance</button><br>
+  <br>
+  <button class="btn btn-success btn-lg"  routerLink = '/exitattendance'>Exit Attendance</button><br>
+  <br>
+  <button class="btn btn-success btn-lg"  routerLink = '/immunattendance'>Immunisation Attendance</button><br>
+  <br>
+  <button class="btn btn-success btn-lg"  routerLink = '/healthattendance'>Health Attendance</button><br>
+  <br>
+    </div>
 </div>
+  
 
 <div>
   <button style="text-align: center" class="btn btn-primary" (click)="goBack()">Back</button>
+</div>
+
 </div>

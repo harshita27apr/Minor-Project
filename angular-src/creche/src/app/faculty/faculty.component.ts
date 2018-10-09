@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../register.service';
 import { ContactService } from '../contact.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-faculty',
@@ -16,7 +17,9 @@ export class FacultyComponent implements OnInit {
   flag;
   flag2;
 
-  constructor( private register : RegisterService, private contact : ContactService, private router : Router ) { }
+  constructor( private register : RegisterService,
+     private contact : ContactService, private router : Router,
+    private location : Location ) { }
 
   ngOnInit()   { 
     this.getcre();
@@ -52,5 +55,9 @@ export class FacultyComponent implements OnInit {
       }
         else return false;
     })
+  }
+
+  goBack() : void {
+    this.location.back();
   }
 }

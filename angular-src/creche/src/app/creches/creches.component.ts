@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../register.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class CrechesComponent implements OnInit {
   flag3;
 
   constructor( private register : RegisterService,
-  private router : Router ) { }
+  private router : Router,
+private location : Location ) { }
   
   ngOnInit() 
   {
@@ -80,4 +82,7 @@ export class CrechesComponent implements OnInit {
     this.router.navigate(['/crechedetails']);
   }
 
+  goBack() : void {
+    this.location.back();
+  }
 }

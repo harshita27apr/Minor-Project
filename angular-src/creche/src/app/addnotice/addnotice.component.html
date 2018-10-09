@@ -1,13 +1,13 @@
-
+<div style="background-image: url('assets/notice.jpg');background-repeat: no-repeat; height:650px;" >
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" routerLink="/" >
-      <img src="assets/logo.jpg" width="50" height="50" alt="logo">
+      <img src="assets/logo.jpg" width="70" height="55" alt="logo">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
+      <ul class="nav">
         <li class="nav-item active">
           <a class="nav-link" routerLink="/crechehome">Home</a>
         </li>
@@ -49,7 +49,7 @@
   <div class="card" style="background-color:transparent">
     <div class="card-body">
       <div class="container">
-      <h3 class="text-center text-dark">Add Notice</h3><br>
+      <h3 class="text-center text-dark"><strong>Add Notice</strong></h3><br>
       <form class= "form-horizontal" #noticeForm="ngForm" style="background-color: transparent; text-align: center">
     
     <div class="row d-flex justify-content-center">
@@ -77,9 +77,10 @@
       </div>
       </div>
     
-      <button type="submit" [disabled]="!noticeForm.form.valid" (click)="notice(title.value,description.value)" class="btn btn-primary btn-lg">Add Notice</button>
+      <button type="submit" [disabled]="!noticeForm.form.valid" (click)="notice(title.value,description.value)" class="btn btn-success btn-lg">Add Notice</button>
     
     </form>
+    </div>
     </div>
     </div>
     </div>
