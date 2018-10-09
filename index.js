@@ -7,6 +7,7 @@ const nodemailer = require("nodemailer");
 var bcrypt = require('bcryptjs');
 app.use(bodyParser.json(),cors());
 const saltRounds = 10;
+var lodash = require('lodash');
 
 var {Government} = require('./models/government');
 var {Parent} = require('./models/parent');
@@ -37,6 +38,21 @@ app.post('/contact',function(req,res){
     })
 })
 });
+
+app.patch('/edit' , (req,res) => {
+    var body = lodash.pick(req.body ,['name','email','mobile','address']);
+
+    Parent.findOneAndUpdate( {"email" : req.body.email}, {$set : body} , {new : true}).then((user) => {
+        if(!user) {
+            return res.send(404).send();
+        }
+    console.log(user);
+    res.send(user)
+    }).catch((e) => {
+        console.log(e);
+    }); 
+
+})
 
 app.post('/notice' , function(req,res) {
     var not = new Notice ({

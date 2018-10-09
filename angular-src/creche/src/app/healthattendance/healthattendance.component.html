@@ -7,13 +7,15 @@
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Attendance</th>
+      <th scope="col">Button</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let user of arr">
       <td>{{user.name}}</td>
       <td>{{user.email}}</td>
-      <td><input type="checkbox"></td>
+      <td><input type="checkbox" class="form-control" id="attendance" [(ngModel)]="attendancet" #attendance="ngModel" ></td>
+      <td><button style="text-align : center" class="btn btn-primary" (click)="sendattendance(attendance.value)">Send Mail</button></td>
     </tr> 
   </tbody>
 </table>
@@ -21,5 +23,4 @@
 
 <div>
   <button style="text-align: center" class="btn btn-primary" (click)="goBack()">Back</button>
-  <button style="text-align: center" class="btn btn-primary" (click)="goBack()">Save</button>
 </div>

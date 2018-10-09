@@ -84,4 +84,13 @@ export class ContactService {
   facultyList() : Observable<any> {
     return this.http.post("http://localhost:3000/facultylist",{"email":this.crecheEmail}).pipe(map(response => response));
   }
+
+  getparentprofile() {
+    return this.http.post("http://localhost:3000/childrendetail",{"email":this.parentEmail}).pipe(map(response => response));
+  }
+
+  edit(array) : Observable<any> {
+      return this.http.patch('http://localhost:3000/edit',array).pipe(map(response => response));
+    }   
+
 }

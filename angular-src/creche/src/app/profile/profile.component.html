@@ -34,3 +34,31 @@
       </ul>
   </div>
 </nav>
+
+<div *ngIf="user">
+  <h2 style="text-align: center">{{ user.name | uppercase }} Details</h2>
+
+<div class="row">
+  <div class="col-8">
+    <form>
+    <label>Parent Name : <input type="text" [(ngModel)]="user.name" #name="ngModel" id="name" name="name" class="form-control" value="{{user.name}}" [disabled]="check"></label><br><br>
+    <label>Child Name : <input type="text" [(ngModel)]="user.cname" #cname="ngModel" id="cname" name="cname" class="form-control" value="{{user.cname}}" [disabled]="check"></label><br><br>
+    <label>email : <input type="text" [(ngModel)]="user.email" #email="ngModel" id="email" name="email" class="form-control" value="{{user.email}}" [disabled]="check"></label><br><br>
+    <label>Mobile : <input type="text" [(ngModel)]="user.mobile" #mobile="ngModel" id="mobile" name="mobile" class="form-control" value="{{user.mobile}}" [disabled]="check"></label><br><br>
+    <label>Address : <input type="text" [(ngModel)]="user.address" #address="ngModel" id="address" name="address" class="form-control" value="{{user.address}}" [disabled]="check"></label><br><br>
+    </form>
+    <div *ngIf="check">
+    <button class="btn btn-primary btn-sm" (click)="edit()">Edit</button>
+    <button  class="btn btn-primary btn-sm" (click)="goBack()">Back</button>
+    </div> 
+    <div  *ngIf="check2"> 
+    <button class="btn btn-primary btn-sm" (click)="save(name.value,email.value,mobile.value,address.value)">Save</button>
+    <button  class="btn btn-primary btn-sm" (click)="goBack()">Back</button>
+    </div>
+  </div>
+  <div class="col-4">
+      <img src="assets/images/p.png" style=" height:300px; width:300px;">
+  </div>
+</div>
+</div>
+

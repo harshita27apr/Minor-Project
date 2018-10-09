@@ -27,5 +27,9 @@ export class HealthattendanceComponent implements OnInit {
     this.location.back();
   }
 
+  sendattendance(checkbox) {
+    console.log(checkbox);
+  }
+
 
 }
