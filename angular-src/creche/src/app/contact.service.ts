@@ -32,7 +32,6 @@ export class ContactService {
   }
 
   setCreche(email) {
-    console.log(email);
     this.crecheEmail = email;
   }
 
@@ -83,7 +82,6 @@ export class ContactService {
   }
 
   facultyList() : Observable<any> {
-    console.log("Entered Faculty List",this.crecheEmail);
     return this.http.post("http://localhost:3000/facultylist",{"email":this.crecheEmail}).pipe(map(response => response));
   }
 }

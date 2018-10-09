@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit {
       "radio" : radio
      }
      this.register.login(this.arr).subscribe(res => {
-       console.log(res)
       if(radio == "Government" && res.result == true) {
         this.register.setvalue("Government")
         this.router.navigate(['/govhome']);
