@@ -395,15 +395,6 @@ app.post('/getCreche' ,(req,res) => {
 
 app.post('/pMail', function(req,res){
     console.log("Entered Node",req.body);
-    let smtpTransport = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        port: 465,
-        secure: true,
-        auth: {
-            user: "national.creche@gmail.com", 
-            pass: "creche123"
-        }
-    });
 
     var mailOptionsEntry = {
         from : '"National Creche" <national.creche@gmail.com>',
@@ -411,7 +402,7 @@ app.post('/pMail', function(req,res){
         subject : "Student Received at National Creche.",
         html : "Hello dear Parent,<br>We would like to confirm that your child is present for today's creche schedule. We will keep you posted with every activities of your child<br>Reagrds,<br>National Creche Team"
     }
-    var mailOptionExit = {
+    var mailOptionsExit = {
         from : '"National Creche" <national.creche@gmail.com>',
         to : req.body.email,
         subject : "Student leaving the premises.",
@@ -430,6 +421,16 @@ app.post('/pMail', function(req,res){
         html : "Hello dear Parents,<br>The Immunization Drive at the National Creche has been concluded. Your child has been given all the necessary vaccines as per your request. Please collect the reeipts for the same as soon as possible.<br>Regards,<br>National Creche Team"
     }
 
+    let smtpTransport = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: "national.creche@gmail.com", 
+            pass: "creche123"
+        }
+    });
+
     if( req.body.mail == 'entry' ) {
         smtpTransport.sendMail(mailOptionsEntry,function(error,response){
             if(error) console.log("Error : SMTP Transport MailOptionsEntry\n",error);
@@ -441,12 +442,12 @@ app.post('/pMail', function(req,res){
         });
     }
     else if( req.body.mail == 'health' ){
-        smtpTransport.sendMail(mailOptionsFaculty,function(error,response){
+        smtpTransport.sendMail(healthAttendance,function(error,response){
             if(error) console.log("Error : SMTP Transport HealthAttendance\n",error);
         });
     }
     else if( req.body.mail == 'immune' ){
-        smtpTransport.sendMail(mailOptionsFaculty,function(error,response){
+        smtpTransport.sendMail(immunAttendance,function(error,response){
             if(error) console.log("Error : SMTP Transport ImmunizationAtendance",error);
         });
     }
