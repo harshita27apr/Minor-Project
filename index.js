@@ -393,8 +393,8 @@ app.post('/getCreche' ,(req,res) => {
     })
 });
 
-app.post('/sendAttendanceMail', function(req,res){
-    console.log(req.body);
+app.post('/pMail', function(req,res){
+    console.log("Entered Node",req.body);
     let smtpTransport = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,

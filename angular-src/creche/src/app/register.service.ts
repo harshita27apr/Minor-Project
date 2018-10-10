@@ -86,10 +86,7 @@ export class RegisterService {
     return this.http.post("http://localhost:3000/getCreche",{"email":this.crecheEmail}).pipe(map(response => response));
   }
 
-  sendAttendance(result) {
-    var i=0;
-    for(i=0;i<result.values.length;i++){
-      this.http.post("http://localhost:3000/sendAttendanceMail",{ "mail":result.AttendanceType , "email":result.values[i] });
-    }
-  }
+  sendAttendance(res) : Observable<any> {
+    return this.http.post("http://localhost:3000/pMail",res).pipe(map(res =>res));
  }
+}
