@@ -26,5 +26,8 @@ export class EntryattendanceComponent implements OnInit {
   goBack() {
     this.location.back();
   }
-
+  
+  sendattendance(vals) {
+    this.register.sendAttendance(vals.email);
+  }
 }

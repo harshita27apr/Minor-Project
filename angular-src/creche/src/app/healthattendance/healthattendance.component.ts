@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../register.service';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-healthattendance',
@@ -10,11 +11,11 @@ import { Location } from '@angular/common';
 export class HealthattendanceComponent implements OnInit {
 
   arr = [];
+  toSend = [];
   
-  constructor( private register : RegisterService, private location : Location ) { }
+  constructor( private router:Router , private register : RegisterService, private location : Location ) { }
 
-  ngOnInit() 
-  {
+  ngOnInit() {
     this.childrenlist(); 
   }
 
@@ -27,9 +28,19 @@ export class HealthattendanceComponent implements OnInit {
     this.location.back();
   }
 
-  sendattendance(checkbox) {
-    console.log(checkbox);
+  sendattendance() {
+    this.register.sendAttendance({ "AttendanceType" : "health" , "values" : this.toSend });
+    this.router.navigate(['/crechehome']);
   }
 
-
+  selectToSend(events){
+    var i = 0;
+    for(i=0;i<this.toSend.length;i++){
+      if(events == this.toSend[i]){
+        this.toSend.splice(i,1);
+        return;
+      }
+    }
+    this.toSend.push(events);
+  }
 }

@@ -10,6 +10,7 @@ import { Location } from '@angular/common';
 export class ImmunisationattendanceComponent implements OnInit {
 
   arr = [];
+  toSend = []
 
   constructor( private register : RegisterService, private location : Location ) { }
 
@@ -26,6 +27,7 @@ export class ImmunisationattendanceComponent implements OnInit {
   goBack() {
     this.location.back();
   }
-
-
+  sendattendance(vals) {
+    this.register.sendAttendance({ "AttendanceType" : "immune" , "values" : this.toSend });
+  }
 }

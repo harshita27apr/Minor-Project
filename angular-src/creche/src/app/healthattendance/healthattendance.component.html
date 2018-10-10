@@ -1,5 +1,5 @@
 <h2 style="text-align:center;">Children</h2>
-
+<td><button style="text-align : center" class="btn btn-primary" (click)="sendattendance()">Send Mail</button></td>
 <div class="container">
 <table class="table table-hover">
   <thead>
@@ -14,8 +14,7 @@
     <tr *ngFor="let user of arr">
       <td>{{user.name}}</td>
       <td>{{user.email}}</td>
-      <td><input type="checkbox" class="form-control" id="attendance" [(ngModel)]="attendancet" #attendance="ngModel" ></td>
-      <td><button style="text-align : center" class="btn btn-primary" (click)="sendattendance(attendance.value)">Send Mail</button></td>
+      <td><input type="checkbox" class="form-control" id="attendance" (click)="selectToSend(user.email)" [(ngModel)]="attendancet" #attendance="ngModel" ></td>
     </tr> 
   </tbody>
 </table>
@@ -24,3 +23,4 @@
 <div>
   <button style="text-align: center" class="btn btn-primary" (click)="goBack()">Back</button>
 </div>
+<td><button style="text-align : center" class="btn btn-primary" (click)="sendattendance()">Send Mail</button></td>

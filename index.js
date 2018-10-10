@@ -232,7 +232,7 @@ app.post('/sendRegisterMail',function(req,res){
         from : '"National Creche" <national.creche@gmail.com>',
         to : req.body.email,
         subject : "Registration Successful",
-        html : "<b>Hello Dear,<br>We would love to inform you that your ward's admission has been successfully registered under the National Creche Program. Your ward's childhood and safety is of our utmost importance and so we would like you to please visit our official page and fill out your details.<br>Your login details are as follows :<br>ID - " + req.body.email + "<br>OTP - " + req.body.password + "<br>We will inform you about you child's activities and notices on our official site, so please stay tuned<br>For any queries revert please contact us or revert on this mail id - " + req.body.crecheEmail + "<hr>Regards<br>National Creche Team"
+        html : "<b>Hello Dear,<br>We would love to inform you that your ward's admission has been successfully registered under the National Creche Program. Your ward's safety is our utmost importance. We would like you to please visit our official page and fill out your details.<br>Your login details are as follows :<br>ID - " + req.body.email + "<br>OTP - " + req.body.password + "<br>We will inform you about your child's activities and notices on our official site, so please stay tuned<br>For any queries please revert or contact us on this mail id - " + req.body.crecheEmail + "<hr>Regards<br>National Creche Team"
     }
     var mailOptionsFaculty = {
         from : '"National Creche" <national.creche@gmail.com>',
@@ -393,63 +393,64 @@ app.post('/getCreche' ,(req,res) => {
     })
 });
 
-// app.post('/sendAttendanceMail', function(req,res){
-//     let smtpTransport = nodemailer.createTransport({
-//         host: 'smtp.gmail.com',
-//         port: 465,
-//         secure: true,
-//         auth: {
-//             user: "national.creche@gmail.com", 
-//             pass: "creche123"
-//         }
-//     });
+app.post('/sendAttendanceMail', function(req,res){
+    console.log(req.body);
+    let smtpTransport = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: "national.creche@gmail.com", 
+            pass: "creche123"
+        }
+    });
 
-//     var mailOptionsEntry = {
-//         from : '"National Creche" <national.creche@gmail.com>',
-//         to : req.body.email,
-//         subject : "Student Received at National Creche.",
-//         html : 
-//     }
-//     var mailOptionExit = {
-//         from : '"National Creche" <national.creche@gmail.com>',
-//         to : req.body.email,
-//         subject : "Student leaving the premises.",
-//         html : 
-//     }
-//     var healthAttendance = {
-//         from : '"National Creche" <national.creche@gmail.com>',
-//         to : req.body.email,
-//         subject : "Health Checkup Drive at National Creche.",
-//         html : 
-//     }
-//     var immunAttendance = {
-//         from : '"National Creche" <national.creche@gmail.com>',
-//         to : req.body.email,
-//         subject : "Immunization Drive at National Creche.",
-//         html : 
-//     }
+    var mailOptionsEntry = {
+        from : '"National Creche" <national.creche@gmail.com>',
+        to : req.body.email,
+        subject : "Student Received at National Creche.",
+        html : "Hello dear Parent,<br>We would like to confirm that your child is present for today's creche schedule. We will keep you posted with every activities of your child<br>Reagrds,<br>National Creche Team"
+    }
+    var mailOptionExit = {
+        from : '"National Creche" <national.creche@gmail.com>',
+        to : req.body.email,
+        subject : "Student leaving the premises.",
+        html : "Hello dear PArent,<r>We would like to inform to you about the departure of your child from The National Creche.<br>For any querries please revert to this mail or contact us about the same. <br>Reagards,<br>National Creche Team"
+    }
+    var healthAttendance = {
+        from : '"National Creche" <national.creche@gmail.com>',
+        to : req.body.email,
+        subject : "Health Checkup Drive at National Creche.",
+        html : "Hello dear Parents,<br>I would like to bring to your notice that a health checkup was organised by the creche for all the students. It is my humble request that you please give the feedback about the same. Please make sure <b>to collect your ward's medical reports</b> as soon as possible.<br>Regards,<br>National Creche Team"
+    }
+    var immunAttendance = {
+        from : '"National Creche" <national.creche@gmail.com>',
+        to : req.body.email,
+        subject : "Immunization Drive at National Creche.",
+        html : "Hello dear Parents,<br>The Immunization Drive at the National Creche has been concluded. Your child has been given all the necessary vaccines as per your request. Please collect the reeipts for the same as soon as possible.<br>Regards,<br>National Creche Team"
+    }
 
-//     if(){
-//         smtpTransport.sendMail(mailOptionsEntry,function(error,response){
-//             if(error) console.log("Error : SMTP Transport MailOptionsEntry\n",error);
-//         })};
-    
-//     elif(){
-//         smtpTransport.sendMail(mailOptionsExit,function(error,response){
-//             if(error) console.log("Error : SMTP Transport MultipleOptionsExit\n",error);
-//         });
-//     };
-//     elif(){
-//         smtpTransport.sendMail(mailOptionsFaculty,function(error,response){
-//             if(error) console.log("Error : SMTP Transport HealthAttendance\n",error);
-//         });
-//     };
-//     elif(){
-//         smtpTransport.sendMail(mailOptionsFaculty,function(error,response){
-//             if(error) console.log("Error : SMTP Transport ImmunizationAtendance",error);
-//         });
-//     }
-// });
+    if( req.body.mail == 'entry' ) {
+        smtpTransport.sendMail(mailOptionsEntry,function(error,response){
+            if(error) console.log("Error : SMTP Transport MailOptionsEntry\n",error);
+        });
+    }
+    else if( req.body.mail == 'exit' ){
+        smtpTransport.sendMail(mailOptionsExit,function(error,response){
+            if(error) console.log("Error : SMTP Transport MultipleOptionsExit\n",error);
+        });
+    }
+    else if( req.body.mail == 'health' ){
+        smtpTransport.sendMail(mailOptionsFaculty,function(error,response){
+            if(error) console.log("Error : SMTP Transport HealthAttendance\n",error);
+        });
+    }
+    else if( req.body.mail == 'immune' ){
+        smtpTransport.sendMail(mailOptionsFaculty,function(error,response){
+            if(error) console.log("Error : SMTP Transport ImmunizationAtendance",error);
+        });
+    }
+});
 
 app.listen(3000,(err, res) => {
     if(err) return console.log("Unable to set up server",err);
