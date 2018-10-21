@@ -1,3 +1,4 @@
+import { ContactService } from './../contact.service';
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../register.service';
 import { Location } from '@angular/common';
@@ -12,7 +13,7 @@ export class ImmunisationattendanceComponent implements OnInit {
   arr = [];
   toSend = []
 
-  constructor( private register : RegisterService, private location : Location ) { }
+  constructor( private register : RegisterService, private location : Location , private contact : ContactService ) { }
 
   ngOnInit() 
   {
@@ -27,7 +28,8 @@ export class ImmunisationattendanceComponent implements OnInit {
   goBack() {
     this.location.back();
   }
-  sendattendance(vals) {
-    this.register.sendAttendance({ "AttendanceType" : "immune" , "values" : this.toSend });
+  
+  sendAttendance(vals) {
+    this.contact.sendAttendance({ "mailType" : "immune" , "email" : vals }).subscribe(response => { });
   }
 }

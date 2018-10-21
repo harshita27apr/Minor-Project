@@ -1,3 +1,4 @@
+import { ContactService } from './../contact.service';
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../register.service';
 import { Location } from '@angular/common';
@@ -11,7 +12,7 @@ export class EntryattendanceComponent implements OnInit {
 
   arr = [];
 
-  constructor( private register : RegisterService, private location : Location ) { }
+  constructor( private register : RegisterService, private location : Location , private contact : ContactService ) { }
 
   ngOnInit() 
   {
@@ -27,7 +28,7 @@ export class EntryattendanceComponent implements OnInit {
     this.location.back();
   }
   
-  sendattendance(vals) {
-    this.register.sendAttendance(vals.email);
+  sendAttendance(vals) {
+    this.contact.sendAttendance({ "mailType" : "entry" , "email" : vals }).subscribe(response => { });
   }
 }

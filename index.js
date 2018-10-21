@@ -394,33 +394,6 @@ app.post('/getCreche' ,(req,res) => {
 });
 
 app.post('/pMail', function(req,res){
-    console.log("Entered Node",req.body);
-
-    var mailOptionsEntry = {
-        from : '"National Creche" <national.creche@gmail.com>',
-        to : req.body.email,
-        subject : "Student Received at National Creche.",
-        html : "Hello dear Parent,<br>We would like to confirm that your child is present for today's creche schedule. We will keep you posted with every activities of your child<br>Reagrds,<br>National Creche Team"
-    }
-    var mailOptionsExit = {
-        from : '"National Creche" <national.creche@gmail.com>',
-        to : req.body.email,
-        subject : "Student leaving the premises.",
-        html : "Hello dear PArent,<r>We would like to inform to you about the departure of your child from The National Creche.<br>For any querries please revert to this mail or contact us about the same. <br>Reagards,<br>National Creche Team"
-    }
-    var healthAttendance = {
-        from : '"National Creche" <national.creche@gmail.com>',
-        to : req.body.email,
-        subject : "Health Checkup Drive at National Creche.",
-        html : "Hello dear Parents,<br>I would like to bring to your notice that a health checkup was organised by the creche for all the students. It is my humble request that you please give the feedback about the same. Please make sure <b>to collect your ward's medical reports</b> as soon as possible.<br>Regards,<br>National Creche Team"
-    }
-    var immunAttendance = {
-        from : '"National Creche" <national.creche@gmail.com>',
-        to : req.body.email,
-        subject : "Immunization Drive at National Creche.",
-        html : "Hello dear Parents,<br>The Immunization Drive at the National Creche has been concluded. Your child has been given all the necessary vaccines as per your request. Please collect the reeipts for the same as soon as possible.<br>Regards,<br>National Creche Team"
-    }
-
     let smtpTransport = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
@@ -428,27 +401,51 @@ app.post('/pMail', function(req,res){
         auth: {
             user: "national.creche@gmail.com", 
             pass: "creche123"
-        }
+        } 
     });
 
-    if( req.body.mail == 'entry' ) {
-        smtpTransport.sendMail(mailOptionsEntry,function(error,response){
+    if( req.body.mailType == 'entry' ) {
+        smtpTransport.sendMail({
+            from : '"National Creche" <national.creche@gmail.com>',
+            to : req.body.email,
+            subject : "Student Received at National Creche.",
+            html : "Hello dear Parent,<br>We would like to confirm that your child is present for today's creche schedule. We will keep you posted with every activities of your child<br>Reagrds,<br>National Creche Team",
+        },function(error,response){
             if(error) console.log("Error : SMTP Transport MailOptionsEntry\n",error);
+            else res.json( {"result" : true} );
         });
     }
-    else if( req.body.mail == 'exit' ){
-        smtpTransport.sendMail(mailOptionsExit,function(error,response){
+    else if( req.body.mailType == 'exit' ){
+        smtpTransport.sendMail({
+            from : '"National Creche" <national.creche@gmail.com>',
+            to : req.body.email,
+            subject : "Student leaving the premises.",
+            html : "Hello dear Parent,<r>We would like to inform to you about the departure of your child from The National Creche.<br>For any querries please revert to this mail or contact us about the same. <br>Reagards,<br>National Creche Team"
+        },function(error,response){
             if(error) console.log("Error : SMTP Transport MultipleOptionsExit\n",error);
+            else res.json( {"result" : true} );
         });
     }
-    else if( req.body.mail == 'health' ){
-        smtpTransport.sendMail(healthAttendance,function(error,response){
+    else if( req.body.mailType == 'health' ){
+        smtpTransport.sendMail({
+            from : '"National Creche" <national.creche@gmail.com>',
+            to : req.body.email,
+            subject : "Health Checkup Drive at National Creche.",
+            html : "Hello dear Parents,<br>I would like to bring to your notice that a health checkup was organised by the creche for all the students. It is my humble request that you please give the feedback about the same. Please make sure <b>to collect your ward's medical reports</b> as soon as possible.<br>Regards,<br>National Creche Team"
+        },function(error,response){
             if(error) console.log("Error : SMTP Transport HealthAttendance\n",error);
+            else res.json( {"result" : true} );
         });
     }
-    else if( req.body.mail == 'immune' ){
-        smtpTransport.sendMail(immunAttendance,function(error,response){
+    else if( req.body.mailType == 'immune' ){
+        smtpTransport.sendMail({
+            from : '"National Creche" <national.creche@gmail.com>',
+            to : req.body.email,
+            subject : "Immunization Drive at National Creche.",
+            html : "Hello dear Parents,<br>The Immunization Drive at the National Creche has been concluded. Your child has been given all the necessary vaccines as per your request. Please collect the reeipts for the same as soon as possible.<br>Regards,<br>National Creche Team"
+        },function(error,response){
             if(error) console.log("Error : SMTP Transport ImmunizationAtendance",error);
+            else res.json( {"result" : true} );
         });
     }
 });

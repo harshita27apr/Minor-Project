@@ -1,3 +1,4 @@
+import { ContactService } from './../contact.service';
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../register.service';
 import { Location } from '@angular/common';
@@ -11,8 +12,7 @@ export class ExitattendanceComponent implements OnInit {
 
   arr;
   
-  constructor( private register : RegisterService,
-  private location : Location) { }
+  constructor( private register : RegisterService , private contact : ContactService , private location : Location) { }
 
   ngOnInit() 
   {
@@ -28,5 +28,7 @@ export class ExitattendanceComponent implements OnInit {
     this.location.back();
   }
 
-
+  sendAttendance(vals) {
+    this.contact.sendAttendance({ "mailType" : "exit" , "email" : vals }).subscribe(response => { });
+  }
 }

@@ -1,7 +1,7 @@
+import { ContactService } from './../contact.service';
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../register.service';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-healthattendance',
@@ -12,7 +12,7 @@ export class HealthattendanceComponent implements OnInit {
 
   arr = [];
   
-  constructor( private router:Router , private register : RegisterService, private location : Location ) { }
+  constructor( private register : RegisterService, private location : Location , private contact : ContactService ) { }
 
   ngOnInit() {
     this.childrenlist(); 
@@ -27,7 +27,7 @@ export class HealthattendanceComponent implements OnInit {
     this.location.back();
   }
 
-  sendattendance(email) {
-    this.register.sendAttendance({ "mail" : "health" , "email" : email });
+  sendAttendance(email) {
+    this.contact.sendAttendance({ "mailType" : "health" , "email" : email }).subscribe(res => { });
   }
 }
